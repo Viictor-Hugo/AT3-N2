@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h> 
 #include "hanoi.h"
+#define MAX_DISKS 10
 
 void initStack(Stack *stack, int capacity) {
     stack->disks = (int *)malloc(capacity * sizeof(int));
@@ -94,6 +95,11 @@ int main() {
     int numDisks;
     printf("Digite o numero de discos: ");
     scanf("%d", &numDisks);
+    
+    while (numDisks < 1 || numDisks > MAX_DISKS) {
+        printf("Numero invalido. Digite um numero de discos entre 1 e %d: ", MAX_DISKS);
+        scanf("%d", &numDisks);
+    }
 
     Stack towers[3];
     for (int i = 0; i < 3; i++) {
